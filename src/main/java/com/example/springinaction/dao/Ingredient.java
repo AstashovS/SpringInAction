@@ -1,4 +1,4 @@
-package com.example.springinaction.DAO;
+package com.example.springinaction.dao;
 
 import lombok.Data;
 

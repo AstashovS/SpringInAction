@@ -1,10 +1,10 @@
 package com.example.springinaction.controller;
 
-import com.example.springinaction.DAO.Ingredient;
-import com.example.springinaction.DAO.Ingredient.Type;
+import com.example.springinaction.dao.Ingredient;
+import com.example.springinaction.dao.Ingredient.Type;
 
-import com.example.springinaction.DAO.Taco;
-import com.example.springinaction.DAO.TacoOrder;
+import com.example.springinaction.dao.Taco;
+import com.example.springinaction.dao.TacoOrder;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 

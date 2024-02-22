@@ -1,7 +1,7 @@
 package com.example.springinaction.converter;
 
-import com.example.springinaction.DAO.Ingredient;
-import com.example.springinaction.DAO.Ingredient.Type;
+import com.example.springinaction.dao.Ingredient;
+import com.example.springinaction.dao.Ingredient.Type;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
