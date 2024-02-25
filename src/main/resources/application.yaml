@@ -1,0 +1,29 @@
+server:
+  port: 9091
+logging:
+  level:
+    web: debug
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    name: "taco_cloud"
+    generate-unique-name: false
+#    url: jdbc:h2:mem:taco_cloud;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+#    driverClassName: org.h2.Driver
+#    username: sa
+#    password:
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2-console
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true

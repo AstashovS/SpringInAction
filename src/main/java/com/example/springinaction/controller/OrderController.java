@@ -1,6 +1,7 @@
 package com.example.springinaction.controller;
 
 import com.example.springinaction.dao.TacoOrder;
+import com.example.springinaction.repository.OrderRepository;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,10 @@ import org.springframework.web.bind.support.SessionStatus;
 @RequestMapping("/orders")
 @SessionAttributes("tacoOrder")
 public class OrderController {
+    private final OrderRepository orderRepo;
+    public OrderController(OrderRepository orderRepo){
+        this.orderRepo = orderRepo;
+    }
 
     @GetMapping("/current")
     public String orderForm() {
@@ -27,6 +32,7 @@ public class OrderController {
         if (errors.hasErrors()){
             return "orderForm";
         }
+        orderRepo.save(order);
         log.info("Order submitted: {}", order);
         sessionStatus.setComplete();
 
