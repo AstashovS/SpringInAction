@@ -1,21 +1,31 @@
 package com.example.springinaction.dao;
 
+import com.datastax.oss.driver.api.core.uuid.Uuids;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import lombok.Data;
-import org.hibernate.validator.constraints.CreditCardNumber;
-
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+import lombok.Data;
+import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.cassandra.core.mapping.Column;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
 @Data
-public class TacoOrder {
+@Table("orders")
+public class TacoOrder implements Serializable {
 
+  @Serial
   private static final long serialVersionUID = 1L;
-  private Long id;
-  private Date placedAt;
+
+  @PrimaryKey private UUID id = Uuids.timeBased();
+
+  private Date placedAt = new Date();
 
   @NotBlank(message = "Delivery name is required")
   private String deliveryName;
@@ -41,9 +51,10 @@ public class TacoOrder {
   @Digits(integer = 3, fraction = 0, message = "Invalid CVV")
   private String ccCVV;
 
-  private List<Taco> tacos = new ArrayList<>();
+  @Column("tacos")
+  private List<TacoUDT> tacos = new ArrayList<>();
 
-  public void addTaco(Taco taco) {
+  public void addTaco(TacoUDT taco) {
     this.tacos.add(taco);
   }
 }

@@ -4,8 +4,8 @@ import com.example.springinaction.dao.Ingredient;
 import com.example.springinaction.dao.Ingredient.Type;
 import com.example.springinaction.dao.Taco;
 import com.example.springinaction.dao.TacoOrder;
+import com.example.springinaction.dao.TacoUDT;
 import com.example.springinaction.repository.IngredientRepository;
-import jakarta.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -54,7 +54,7 @@ public class DesignTacoController {
   }
 
   @PostMapping
-  public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute TacoOrder tacoOrder) {
+  public String processTaco(TacoUDT taco, Errors errors, @ModelAttribute TacoOrder tacoOrder) {
     if (errors.hasErrors()) {
       return "design";
     }
